@@ -1,5 +1,7 @@
 from ..base import Crack
-from scapy.all import sniff, ARP
+from scapy.all import sniff
+from scapy.layers.l2 import ARP
+
 
 class MITMCrack(Crack):
     def __init__(self):
