@@ -1,6 +1,6 @@
-from cracks.crack import Crack
+from cracks.base import Crack
 
 class Manager:
   def run(self, crack: Crack):
-    crack.attack()
+    crack.simulateAttack()
     crack.defend()

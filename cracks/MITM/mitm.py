@@ -1,7 +1,7 @@
-from ..crack import Crack
+from ..base import Crack
 
 class MIDMCrack(Crack):
-  def attack(self):
+  def simulateAttack(self):
     pass
 
   def defend(self):
