@@ -1,8 +1,8 @@
-from .cracks.base import Crack
-from .cracks.Port_Scanning.portscan import PortScanCrack
-from .cracks.ARP_Spoofing.arpspoof import ARPSpoofCrack
-from .cracks.DNS.dnsspoof import DNSSpoofCrack
-from .cracks.MITM.mitm import MITMCrack
+from cracks.base import Crack
+from cracks.Port_Scanning.portscan import PortScanCrack
+from cracks.ARP_Spoofing.arpspoof import ARPSpoofCrack
+from cracks.DNS.dnsspoof import DNSSpoofCrack
+from cracks.MITM.mitm import MITMCrack
 from time import sleep
 
 # list of classes (NOT objects) of different cracks
