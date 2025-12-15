@@ -1,10 +1,6 @@
 from ..base import Crack
-<<<<<<< Updated upstream
 from scapy.all import sniff
 from scapy.layers.l2 import ARP
-=======
-from scapy.all import sniff, ARP
->>>>>>> Stashed changes
 
 class MITMCrack(Crack):
     arp_table = {}  #stores IP, MAC mapping
