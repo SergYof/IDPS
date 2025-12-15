@@ -5,4 +5,4 @@ manager = Manager()
 
 portscanning = PortScanCrack()
 
-manager.crack(portscanning)
+manager.run(portscanning)
