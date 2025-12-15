@@ -1,8 +1,8 @@
 from ..crack import Crack
 
 class ARPSpoofCrack(Crack):
-  def attack():
+  def attack(self):
     pass
 
-  def defend():
+  def defend(self):
     pass
