@@ -1,6 +1,6 @@
-# IPDS
+# IDPS
 
-IPDS is a Python-based network security tool designed to detect common network attacks in real-time. It operates by sniffing network traffic and applying a set of modular detection rules to identify malicious activities.
+IDPS is a Python-based network security tool designed to detect common network attacks in real-time. It operates by sniffing network traffic and applying a set of modular detection rules to identify malicious activities.
 
 ## Features
 
@@ -30,8 +30,8 @@ This modular design, based on the abstract `Crack` class, allows for easy extens
 
 1.  Clone the repository:
     ```sh
-    git clone https://github.com/SergYof/IPDS.git
-    cd IPDS
+    git clone https://github.com/SergYof/IDPS.git
+    cd IDPS
     ```
 
 2.  Install the required Python library:
