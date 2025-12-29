@@ -8,6 +8,6 @@ class Crack(ABC):
 
 
   @abstractmethod
-  def identify(self, packetChunk: PacketList): 
+  def identify(self, packetChunk: PacketList) -> list[tuple[str, str, str]]: 
     """Method to defend the crack script"""
     pass
