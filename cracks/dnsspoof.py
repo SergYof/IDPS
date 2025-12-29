@@ -1,44 +1,61 @@
 from base import Crack
-from scapy.layers.dns import DNS, DNSQR, DNSRR
-from scapy.layers.inet import UDP
+from scapy.layers.dns import DNS, UDP
+import dns.resolver  # Import the DNS resolver library
 
 
 class DNSSpoofCrack(Crack):
-    # 1. Cleaned up dictionary formatting
-    trusted_domains = {
-        "google.com": "216.239.38.120",
-        "facebook.com": "157.240.196.35",
-        "ihasabucket.com": "75.119.206.170"
-    }
-
     def __init__(self):
         super().__init__("DNS Spoofing")
 
+        # Configure a resolver to use a Trusted DNS Server (e.g., Google 8.8.8.8)
+        # This bypasses your local network's potentially poisoned DNS cache.
+        self.resolver = dns.resolver.Resolver()
+        self.resolver.nameservers = ['8.8.8.8', '1.1.1.1']
+
     def identify(self):
         for packet in self.packets:
-            # 2. Simplified logic: Check if it is UDP port 53 (DNS)
+            # Check for UDP port 53
             if not packet.haslayer(UDP) or packet[UDP].dport != 53:
-                continue  # Skip if not DNS
+                continue
 
-            # 3. Check if it is a DNS Response (qr == 1)
+            # Check if it is a DNS Response (qr == 1)
             if packet.haslayer(DNS) and packet[DNS].qr == 1:
                 dns_layer = packet[DNS]
 
-                # 4. Fixed indentation: This loop must be inside the if block
                 for i in range(dns_layer.ancount):
                     ans = dns_layer.an[i]
 
                     # Type 1 is an 'A' record (IPv4)
                     if ans.type == 1:
-                        # Decode bytes and strip trailing dot
                         domain = ans.rrname.decode().rstrip('.')
-                        ip_address = ans.rdata
+                        captured_ip = ans.rdata
 
-                        if domain in self.trusted_domains:
-                            trusted_ip = self.trusted_domains[domain]
+                        # Perform the dynamic check
+                        self.verify_dynamic(domain, captured_ip)
 
-                            if ip_address != trusted_ip:
-                                print(
-                                    f"[!] DNS Spoofing detected for domain: {domain} | Expected: {trusted_ip} | Got: {ip_address}")
-                        else:
-                            print(f"[!] DNS response for unknown domain: {domain} | IP: {ip_address}")
+    def verify_dynamic(self, domain, captured_ip):
+        """
+        Queries a trusted DNS server for the domain and compares the result
+        with the captured packet's IP.
+        """
+        try:
+            # Query the trusted nameserver for the real IPs
+            answers = self.resolver.resolve(domain, 'A')
+            trusted_ips = [r.to_text() for r in answers]
+
+            # Check if the captured IP exists in the list of trusted IPs
+            if captured_ip not in trusted_ips:
+                print(f"[!] POTENTIAL SPOOF: {domain}")
+                print(f"    Packet IP: {captured_ip}")
+                print(f"    Trusted IPs: {trusted_ips}")
+            else:
+                # Optional: specific verbose logging for valid packets
+                # print(f"[+] Verified Valid: {domain} -> {captured_ip}")
+                pass
+
+        except dns.resolver.NXDOMAIN:
+            print(f"[!] Domain does not exist (NXDOMAIN): {domain}")
+        except dns.exception.Timeout:
+            print(f"[?] Timeout verifying {domain}")
+        except Exception as e:
+            print(f"[?] Error verifying {domain}: {e}")
