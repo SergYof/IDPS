@@ -13,7 +13,7 @@ class MITMCrack(Crack):
         alerts: list[tuple[str, str, str]] = []
         for packet in packetChunk:
             if not (packet.haslayer(ARP) and packet[ARP].op == 2):
-                break
+                continue
             
             ip = packet[ARP].psrc
             mac = packet[ARP].hwsrc
