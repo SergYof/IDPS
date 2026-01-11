@@ -41,7 +41,7 @@ Notes
 - Packet processing and detection are in `manager.py` and detectors in `cracks/`.
 - The project uses Scapy for packet parsing. On Windows, install Npcap (https://nmap.org/npcap/) and run Python with administrator privileges to capture packets.
 
-Project tree
+## Project tree
 
 - [README.md](README.md)
 - [main.py](main.py)
