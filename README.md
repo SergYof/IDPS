@@ -41,16 +41,7 @@ Notes
 - Packet processing and detection are in `manager.py` and detectors in `cracks/`.
 - The project uses Scapy for packet parsing. On Windows, install Npcap (https://nmap.org/npcap/) and run Python with administrator privileges to capture packets.
 
-Project layout (important files)
-- [main.py](main.py) — launcher and configured interface
-- [manager.py](manager.py) — packet handling, detector orchestration, alert publishing
-- [gui.py](gui.py) — Tkinter live monitor
-- [cracks/](cracks/) — detectors (`portscan.py`, `arpspoof.py`, `dnsspoof.py`)
-- [engine/flow_manager.py](engine/flow_manager.py), [engine/flow.py](engine/flow.py) — flow handling
-- [bus/packet_bus.py](bus/packet_bus.py), [bus/alert_bus.py](bus/alert_bus.py) — simple in-memory buses
-- [utils/geoip.py](utils/geoip.py) — optional GeoIP lookup
-
-## Project tree
+Project tree
 
 - [README.md](README.md)
 - [main.py](main.py)
@@ -77,6 +68,3 @@ Project layout (important files)
 - utils/
 	- [geoip.py](utils/geoip.py)
 	- __pycache__/
-
-Maintainers
-- Current maintainer: repository owner (see repository settings). For code-level questions, open an issue or a PR.
