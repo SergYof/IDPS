@@ -5,6 +5,7 @@ Lightweight, extensible network intrusion monitoring with live GUI, multiple det
 - Port-scan detection (`cracks/portscan.py`)
 - ARP spoof/mitm detection (`cracks/arpspoof.py`)
 - DNS spoof detection (`cracks/dnsspoof.py`)
+- MITM helper tools (`cracks/mitm.py`)
 - Flow tracking and expiry (`engine/flow_manager.py`, `engine/flow.py`)
 - Live Tkinter GUI for alerts and packet stream (`gui.py`)
 - Simple in-process buses for packets and alerts (`bus/packet_bus.py`, `bus/alert_bus.py`)
@@ -57,6 +58,7 @@ Notes
 	- [portscan.py](cracks/portscan.py)
 	- [arpspoof.py](cracks/arpspoof.py)
 	- [dnsspoof.py](cracks/dnsspoof.py)
+	- [mitm.py](cracks/mitm.py)
 - engine/
 	- [flow_manager.py](engine/flow_manager.py)
 	- [flow.py](engine/flow.py)
