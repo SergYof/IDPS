@@ -1,13 +1,13 @@
 
-# IPDS: Intrusion Prevention & Detection System
+# IDS: Intrusion Detection System
 
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
-## What is IPDS?
+## What is IDS?
 
-**IPDS** is a lightweight, extensible network intrusion detection and prevention system featuring a live GUI, modular detection engine, and real-time alerting. It is designed for rapid prototyping, educational use, and easy extension with new detection modules ("cracks").
+**IDS** is a lightweight, extensible network intrusion detection system featuring a live GUI, modular detection engine, and real-time alerting. It is designed for rapid prototyping, educational use, and easy extension with new detection modules ("cracks").
 
 ---
 
