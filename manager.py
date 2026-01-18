@@ -4,7 +4,6 @@ import logging
 
 from bus.alert_bus import ALERT_BUS
 from bus.packet_bus import PACKET_BUS
-from utils.geoip import lookup
 from context import Context
 
 # Suppress Scapy runtime warnings
