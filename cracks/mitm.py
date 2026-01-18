@@ -1,7 +1,7 @@
 from collections import defaultdict, deque
 from time import time
 from scapy.layers.l2 import ARP
-from cracks.base import Crack
+from base import Crack
 
 
 class ARPMitmCrack(Crack):
